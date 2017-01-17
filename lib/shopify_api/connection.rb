@@ -15,6 +15,7 @@ module ShopifyAPI
 
     module RequestNotification
       def request(method, path, *arguments)
+        puts "path: #{path}"
         retry_times = RETRY_TIMES
         begin
           super.tap do |response|

@@ -12,6 +12,38 @@ module ShopifyAPI
                                   "ActiveResource/#{ActiveResource::VERSION::STRING}",
                                   "Ruby/#{RUBY_VERSION}"].join(' ')
 
+    # a collection of information sufficient to find any ShopifyAPI instance
+    def seed
+      {
+        class_name: self.class.name,
+        id: id
+      }.merge(@prefix_options)
+    end
+
+    def self.from_seed(seed, reload = false)
+      return Shop.current if seed[:class_name] == 'ShopifyAPI::Shop'
+
+      seed.symbolize_keys!
+      raise 'Seed does not have id.' if seed[:id].nil?
+
+      resource_class = ObjectSpace.each_object(ShopifyAPI::Base.singleton_class).find do |klass|
+        klass.name == seed[:class_name]
+      end
+      raise "Invalid class_name #{seed[:class_name]}." if resource_class.nil?
+
+      params = seed.reject { |key, value| [:id, :class_name].include? key }
+      resource_class.find(seed[:id], params: params, reload: reload)
+    end
+
+    # a collection of information sufficient to find any ShopifyAPI instance
+    def seed
+      return { class_name: self.class.name } if is_a? Shop
+      {
+        class_name: self.class.name,
+        id: id
+      }.merge(@prefix_options)
+    end
+
     def encode(options = {})
       same = dup
       same.attributes = {self.class.element_name => same.attributes} if self.class.format.extension == 'json'
