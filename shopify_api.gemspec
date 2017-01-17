@@ -28,6 +28,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("activeresource", ">= 3.0.0")
   s.add_runtime_dependency("rack")
 
+  s.add_runtime_dependency("cached_resource")
+
   s.add_development_dependency("mocha", ">= 0.9.8")
   s.add_development_dependency("fakeweb")
   s.add_development_dependency("minitest", ">= 4.0")

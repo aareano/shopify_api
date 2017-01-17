@@ -2,6 +2,8 @@ require 'shopify_api/version'
 
 module ShopifyAPI
   class Base < ActiveResource::Base
+    cached_resource ttl: 60
+
     class InvalidSessionError < StandardError; end
     extend Countable
     self.timeout = 90
