@@ -12,6 +12,12 @@ module ShopifyAPI
                                   "ActiveResource/#{ActiveResource::VERSION::STRING}",
                                   "Ruby/#{RUBY_VERSION}"].join(' ')
 
+    self.mutable_attributes = []
+
+    def mutable_attributes
+      self.class.mutable_attributes
+    end
+
     # a collection of information sufficient to find any ShopifyAPI instance
     def seed
       {

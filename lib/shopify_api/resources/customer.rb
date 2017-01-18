@@ -2,6 +2,12 @@ module ShopifyAPI
   class Customer < Base
     include Metafields
 
+    # :metafields
+    cattr_reader :mutable_attributes do
+      [:accepts_marketing, :email, :first_name, :last_name, :note,
+       :tags]
+    end
+
     def orders
       Order.find(:all, params: {customer_id: self.id})
     end
