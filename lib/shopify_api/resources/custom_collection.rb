@@ -9,6 +9,12 @@ module ShopifyAPI
        :sort_order, :template_suffix, :title]
     end
 
+    # #image is normally only defined when the image is not null,
+    # so provide this convenience method for consistency
+    def image
+      attributes['image']
+    end
+
     def products
       Product.find(:all, :params => {:collection_id => self.id})
     end
