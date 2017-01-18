@@ -2,6 +2,10 @@ module ShopifyAPI
   class Fulfillment < Base
     init_prefix :order
 
+    cattr_reader :prefix_option_keys do
+      [:order_id]
+    end
+
     cattr_reader :mutable_attributes do
       [:tracking_company, :tracking_numbers]
     end

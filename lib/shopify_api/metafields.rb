@@ -11,6 +11,7 @@ module ShopifyAPI
         :resource => self.class.collection_name,
         :resource_id => id
       }
+      puts "metafield.prefix_options: #{metafield.prefix_options}"
       metafield.save
       metafield
     end

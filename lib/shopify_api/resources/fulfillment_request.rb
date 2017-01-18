@@ -2,6 +2,10 @@ module ShopifyAPI
   class FulfillmentRequest < Base
     init_prefix :order
 
+    cattr_reader :prefix_option_keys do
+      [:order_id]
+    end
+
     def order_id
       @prefix_options[:order_id]
     end

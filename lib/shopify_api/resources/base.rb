@@ -12,6 +12,14 @@ module ShopifyAPI
                                   "ActiveResource/#{ActiveResource::VERSION::STRING}",
                                   "Ruby/#{RUBY_VERSION}"].join(' ')
 
+    def self.prefix_option_keys
+      []
+    end
+
+    def prefix_option_keys
+      self.class.prefix_option_keys
+    end
+
     def self.mutable_attributes
       []
     end
@@ -46,6 +54,14 @@ module ShopifyAPI
     # a collection of information sufficient to find any ShopifyAPI instance
     def seed
       return { class_name: self.class.name } if is_a? Shop
+      {
+        class_name: self.class.name,
+        id: id
+      }.merge(@prefix_options)
+    end
+
+    # a collection of information sufficient to find any ShopifyAPI instance
+    def seed
       {
         class_name: self.class.name,
         id: id

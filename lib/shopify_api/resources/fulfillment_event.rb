@@ -4,6 +4,10 @@ module ShopifyAPI
     self.collection_name = 'events'
     self.element_name = 'event'
 
+    cattr_reader :prefix_option_keys do
+      [:order_id, :fulfillment_id]
+    end
+
     def order_id
       @prefix_options[:order_id]
     end

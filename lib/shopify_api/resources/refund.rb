@@ -2,6 +2,10 @@ module ShopifyAPI
   class Refund < Base
     init_prefix :order
 
+    cattr_reader :prefix_option_keys do
+      [:order_id]
+    end
+
     def self.calculate(*args)
       options = { :refund => args[0] }
       params = options.merge(args[1][:params]) if args[1] && args[1][:params]

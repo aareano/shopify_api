@@ -6,6 +6,10 @@ module ShopifyAPI
 
     conditional_prefix :blog
 
+    cattr_reader :prefix_option_keys do
+      [:blog_id]
+    end
+
     def comments
       Comment.find(:all, :params => { :article_id => id })
     end
