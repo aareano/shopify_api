@@ -12,7 +12,9 @@ module ShopifyAPI
                                   "ActiveResource/#{ActiveResource::VERSION::STRING}",
                                   "Ruby/#{RUBY_VERSION}"].join(' ')
 
-    self.mutable_attributes = []
+    def self.mutable_attributes
+      []
+    end
 
     def mutable_attributes
       self.class.mutable_attributes
