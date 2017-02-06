@@ -7,7 +7,7 @@ module ShopifyAPI
     end
 
     def customers(params = {})
-      Customer.search(params.merge({:saved_search_id => self.id}))
+      Customer.search(params.merge({:query => self.query}))
     end
   end
 end
