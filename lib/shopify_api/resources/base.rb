@@ -60,14 +60,6 @@ module ShopifyAPI
       }.merge(@prefix_options)
     end
 
-    # a collection of information sufficient to find any ShopifyAPI instance
-    def seed
-      {
-        class_name: self.class.name,
-        id: id
-      }.merge(@prefix_options)
-    end
-
     def encode(options = {})
       same = dup
       same.attributes = {self.class.element_name => same.attributes} if self.class.format.extension == 'json'
