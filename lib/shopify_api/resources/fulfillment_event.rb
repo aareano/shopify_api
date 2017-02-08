@@ -15,5 +15,9 @@ module ShopifyAPI
     def fulfillment_id
       @prefix_options[:fulfillment_id]
     end
+
+    def fulfillment
+      Fulfillment.find(fulfillment_id, params: { order_id: order_id })
+    end
   end
 end
