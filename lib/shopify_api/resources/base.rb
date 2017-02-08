@@ -28,14 +28,6 @@ module ShopifyAPI
       self.class.mutable_attributes
     end
 
-    # a collection of information sufficient to find any ShopifyAPI instance
-    def seed
-      {
-        class_name: self.class.name,
-        id: id
-      }.merge(@prefix_options)
-    end
-
     def self.from_seed(seed, reload = false)
       return Shop.current if seed[:class_name] == 'ShopifyAPI::Shop'
 
