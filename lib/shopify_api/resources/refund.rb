@@ -13,5 +13,9 @@ module ShopifyAPI
       resource = post(:calculate, {}, options.to_json)
       instantiate_record(format.decode(resource.body), {})
     end
+
+    def order_id
+      @prefix_options[:order_id]
+    end
   end
 end

@@ -11,5 +11,9 @@ module ShopifyAPI
        :country_code, :country_name, :default, :last_name, :name, :phone,
        :province, :province_code, :zip]
     end
+
+    def customer_id
+      @prefix_options[:customer_id]
+    end
   end
 end
