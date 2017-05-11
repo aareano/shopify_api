@@ -4,7 +4,7 @@ module ShopifyAPI
 
     # :metafields
     cattr_reader :mutable_attributes do
-      [:accepts_marketing, :email, :first_name, :last_name, :note,
+      [:accepts_marketing, :tax_exempt, :email, :first_name, :last_name, :note,
        :tags]
     end
 
